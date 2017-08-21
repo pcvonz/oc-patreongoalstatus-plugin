@@ -9,3 +9,8 @@ fields:
         span: auto
         oc.commentPosition: ''
         type: text
+    patreon_url:
+        label: 'Patreon URL'
+        span: auto
+        oc.commentPosition: ''
+        type: text

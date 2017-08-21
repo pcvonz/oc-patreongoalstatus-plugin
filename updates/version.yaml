@@ -24,3 +24,12 @@
 1.0.9:
     - 'Updated table paul_patreon_system_settings'
     - builder_table_update_paul_patreon_system_settings.php
+1.0.10:
+    - 'Updated table paul_patreon_system_settings'
+    - builder_table_update_paul_patreon_system_settings_2.php
+1.0.11:
+    - 'Drop table paul_patreon_register'
+    - builder_table_delete_paul_patreon_register.php
+1.0.12:
+    - 'Drop table paul_patreon_api'
+    - builder_table_delete_paul_patreon_api.php

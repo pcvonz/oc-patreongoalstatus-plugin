@@ -7,6 +7,9 @@ class Plugin extends PluginBase
 {
     public function registerComponents()
     {
+      return [
+        'Paul\Patreon\Components\Goal' => 'Goal'
+      ];
     }
 
     public function registerSettings()
