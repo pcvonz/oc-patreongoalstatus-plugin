@@ -1,0 +1,26 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table paul_patreon_register'
+    - builder_table_create_paul_patreon_register.php
+1.0.3:
+    - 'Updated table paul_patreon_api'
+    - builder_table_update_paul_patreon_api.php
+1.0.4:
+    - 'Created table paul_patreon_register'
+    - builder_table_create_paul_patreon_register.php
+1.0.5:
+    - 'Updated table paul_patreon_register'
+    - builder_table_update_paul_patreon_register.php
+1.0.6:
+    - 'Updated table paul_patreon_register'
+    - builder_table_update_paul_patreon_register_2.php
+1.0.7:
+    - 'Updated table paul_patreon_register'
+    - builder_table_update_paul_patreon_register_3.php
+1.0.8:
+    - 'Created table paul_patreon_system_settings'
+    - builder_table_create_paul_patreon_system_settings.php
+1.0.9:
+    - 'Updated table paul_patreon_system_settings'
+    - builder_table_update_paul_patreon_system_settings.php

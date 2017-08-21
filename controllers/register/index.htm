@@ -1,0 +1,16 @@
+<?= $this->listRender() ?>
+<?= $url ?>
+
+Goes here:
+<?= $this->makePartial('list')?>
+
+<button
+  data-request="onTest"
+  data-request-update="list: '#div'"></button>
+<script>
+$(document).ready(function () {
+  $(this).request('onLoad', {update: {list: '#div'
+  }
+  });
+});
+</script>

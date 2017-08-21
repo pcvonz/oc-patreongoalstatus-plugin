@@ -1,0 +1,17 @@
+plugin:
+    name: 'paul.patreon::lang.plugin.name'
+    description: 'paul.patreon::lang.plugin.description'
+    author: paul
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    Patreon:
+        label: 'paul.patreon::lang.plugin.name'
+        url: paul/patreon/register
+        icon: icon-money
+        permissions:
+            - paul.patreon.manage_register
+permissions:
+    paul.patreon.manage_register:
+        tab: 'paul.patreon::lang.plugin.name'
+        label: Manage

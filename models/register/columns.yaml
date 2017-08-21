@@ -1,0 +1,26 @@
+columns:
+    api_key:
+        label: 'paul.patreon::lang.register.api_key'
+        type: text
+        searchable: true
+        sortable: true
+    client_id:
+        label: 'paul.patreon::lang.register.client_id'
+        type: text
+        searchable: true
+        sortable: true
+    access_token:
+        label: access_token
+        type: text
+        searchable: true
+        sortable: true
+    refresh_token:
+        label: refresh_token
+        type: text
+        searchable: true
+        sortable: true
+    goal_percentage:
+        label: goal_percentage
+        type: number
+        searchable: true
+        sortable: true
