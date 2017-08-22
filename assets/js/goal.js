@@ -7,7 +7,6 @@ function animate (time) {
   requestAnimationFrame(animate);
   TWEEN.update(time);
 }
-var goal = 80;
 
 requestAnimationFrame(animate);
 var start = {x: 0};
