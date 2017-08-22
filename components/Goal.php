@@ -15,10 +15,26 @@ class Goal extends ComponentBase
     public function init()
     {
       $register_client = new \Patreon\API(Settings::get('access_token'));
-      $patron_response = $register_client->fetch_campaign();
-      $patron = $patron_response['data'];
-      $string = json_encode($patron);
-      $included = $patron_response['included'];
+      $campaign_response = $register_client->fetch_campaign();
+
+      // Handle access_token expiring:
+      if (isset($campaign_response['errors'])) {
+          $oauth_client = new \Patreon\OAuth(Settings::get('client_id'), Settings::get('api_key'));
+          // Get a fresher access token
+          $tokens = $oauth_client->refresh_token(Settings::get('refresh_token'), null);
+          // echo Settings::get('refresh_token').'</br>';
+          if ($tokens['access_token']) {
+              // Set new token
+              $access_token = $tokens['access_token'];
+              Settings::set('refresh_token', $tokens['refresh_token']);
+              Settings::set('access_token', $access_token);
+          } else {
+              echo "Can't recover from access failure\n";
+              // print_r($tokens);
+          }
+      }
+      $campaign = $campaign_response['data'];
+      $included = $campaign_response['included'];
       $goal = null;
       if ($included != null) {
         foreach ($included as $obj) {

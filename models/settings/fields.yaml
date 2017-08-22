@@ -14,3 +14,8 @@ fields:
         span: auto
         oc.commentPosition: ''
         type: text
+    refresh_token:
+        label: 'Refresh Token (set after you authorize)'
+        span: auto
+        oc.commentPosition: ''
+        type: text

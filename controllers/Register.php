@@ -38,7 +38,6 @@ class Register extends Controller
         $refresh_token = $tokens['refresh_token'];
         Settings::set('refresh_token', $refresh_token);
         Settings::set('access_token', $access_token);
-        Settings::set('access_token', $access_token);
         
         $register_client = new \Patreon\API(Settings::get('access_token'));
         $patron_response = $register_client->fetch_campaign();
