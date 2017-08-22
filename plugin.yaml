@@ -6,7 +6,7 @@ plugin:
     homepage: ''
 navigation:
     Patreon:
-        label: 'paul.patreon::lang.plugin.name'
+        label: Patreon
         url: paul/patreon/register
         icon: icon-money
         permissions:

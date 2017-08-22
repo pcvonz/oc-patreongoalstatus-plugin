@@ -32,6 +32,7 @@
   background-color: #F96854;
   box-sizing: border-box;
   padding: 0 .5em .5em .5em;
+  transition: background-color .2s;
 }
 
 .patreon-row {
@@ -66,8 +67,7 @@
 }
 
 a.patreonLink {
-  width: 100%;
-  transition: background-color .2s;
+  display: inline-block;
 }
 
 a.patreonLink:hover {
