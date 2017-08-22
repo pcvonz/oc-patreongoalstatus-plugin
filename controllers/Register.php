@@ -8,10 +8,6 @@ use Paul\Patreon\Models\Settings;
 
 class Register extends Controller
 {
-    public $implement = ['Backend\Behaviors\ListController','Backend\Behaviors\FormController'];
-    
-    public $listConfig = 'config_list.yaml';
-    public $formConfig = 'config_form.yaml';
     public $client_id;
     public $client_secret;
     public $redirect_uri;
@@ -30,6 +26,9 @@ class Register extends Controller
         $this->vars['url'] = '<a href=http://www.patreon.com/oauth2/authorize?response_type=code&client_id='.$this->client_id.'&redirect_uri='.$this->actual_link.' >Click here to connect your patreon</a>';
         $this->vars['accountStatus'] = '<b> not </b>';
     }
+    public function index()
+    {
+    }
     public function onLoad()
     {
       if (isset($_GET['code'])) {
@@ -40,10 +39,31 @@ class Register extends Controller
         Settings::set('refresh_token', $refresh_token);
         Settings::set('access_token', $access_token);
         Settings::set('access_token', $access_token);
+        
+        $register_client = new \Patreon\API(Settings::get('access_token'));
+        $patron_response = $register_client->fetch_campaign();
+        $patron = $patron_response['data'];
+        $string = json_encode($patron);
+        $included = $patron_response['included'];
+        $goal = null;
+        if ($included != null) {
+          foreach ($included as $obj) {
+            if ($obj["type"] == "goal") {
+              $pledge = $obj;
+              $amount_cents = $pledge['attributes']['amount_cents'];
+              $amount_dollars = $amount_cents / 100;
+              $amount_cents = $amount_cents % 100;
+              if ($amount_cents < 9) {
+                $amount_cents = '0'.$amount_cents;
+              }
+              Settings::set('amount_cents', '$'.$amount_dollars.'.'.$amount_cents);
+              break;
+            }
+          }
+        }
       } 
       if(Settings::get('access_token') != null) {
          $this->vars['accountStatus'] = '';
-        
       }
     }
 }

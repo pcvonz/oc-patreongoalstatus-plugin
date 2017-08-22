@@ -33,3 +33,6 @@
 1.0.12:
     - 'Drop table paul_patreon_api'
     - builder_table_delete_paul_patreon_api.php
+1.0.13:
+    - 'Updated table paul_patreon_system_settings'
+    - builder_table_update_paul_patreon_system_settings_3.php

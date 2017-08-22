@@ -1,0 +1,79 @@
+#goal a {
+  display: flex;
+  justify-content: flex-start;
+}
+.goalContainer {
+  width: 100%;
+  overflow: hidden;
+  background-color: #052D49;
+  height: 1.6em;
+  padding: .2em 0;
+}
+.percentageBar {
+  background-color: white;
+  width: 0%;
+  height: 100%;
+  margin-bottom: -1.4em;
+}
+.goalContainer p {
+  text-align: center;
+  position: relative;
+  line-height: 1.5em;
+  color: #F96854;
+  margin: 0;
+  padding: 0;
+}
+
+.patreon {
+  width: 11em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F96854;
+  box-sizing: border-box;
+  padding: 0 .5em .5em .5em;
+}
+
+.patreon-row {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.patreon-brand {
+  background-image: url('../images/patreon.png');
+  background-size: auto 40%;
+  background-repeat: no-repeat;
+  background-position: 7px 50%;
+  width: 2.8em;
+  height: 2.8em;
+  margin-right: .5em;
+}
+
+.patreon-uppercase {
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  font-size: .6em;
+  margin: 0;
+  padding: .2em;
+}
+
+#goal {
+  width: 100%;
+}
+
+a.patreonLink {
+  width: 100%;
+  transition: background-color .2s;
+}
+
+a.patreonLink:hover {
+  text-decoration: none;
+}
+
+a:hover > .patreon {
+  background-color: #FF6330;
+}

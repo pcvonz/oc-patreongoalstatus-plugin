@@ -12,10 +12,6 @@ class Goal extends ComponentBase
             'description' => 'No description provided yet...'
         ];
     }
-
-    public function onTest()
-    {
-    }
     public function init()
     {
       $register_client = new \Patreon\API(Settings::get('access_token'));
@@ -30,10 +26,16 @@ class Goal extends ComponentBase
             $pledge = $obj;
             $this->page['goalPercentage'] =json_encode($pledge['attributes']['completed_percentage']);
             $this->page['patreon_url'] = Settings::get('patreon_url');
+            $this->page['amount_cents'] = Settings::get('amount_cents');
             break;
           }
         }
       }
+    }
+    public function onRun()
+    {
+      $this->addCss('/plugins/paul/patreon/assets/css/goal.css');
+      $this->addJs('/plugins/paul/patreon/assets/js/goal.js');
     }
     public function defineProperties()
     {

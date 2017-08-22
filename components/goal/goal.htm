@@ -1,63 +1,22 @@
-<div data-percentage="{{ goalPercentage }}" id="goal"> 
-  <a href="{{ patreon_url }}">
-    <div>
-      <img src=""/>
-    </div>
-    <div class="goalContainer">
-      <div class="percentageBar">
+<a class="patreonLink" href="{{ patreon_url }}">
+  <div class="patreon">
+    <div class="patreon-row">
+      <div class="patreon-brand">
       </div>
-      <p> {{ goalPercentage }}% </p>
-    </div
-  </a>
-  </a>
-</div>
+      <p class="patreon-uppercase"> Become a patron </p>
+    </div>
+    <div class="patreon-row">
+      <div data-percentage="{{ goalPercentage }}" id="goal"> 
+          <div class="goalContainer">
+            <div class="percentageBar">
+            </div>
+              <p> {{ goalPercentage }}% </p>
+          </div
+      </div>
+    </div>
+      <p class="patreon-uppercase">{{ amount_cents }}</p>
+    </div>
+  </div>
+</a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
-<script>
-var pBar = document.querySelector(".goalContainer  .percentageBar");
-var pBarP = document.querySelector(".goalContainer  p");
-
-var goal = document.getElementById('goal');
-
-function animate (time) {
-  requestAnimationFrame(animate);
-  TWEEN.update(time);
-}
-
-requestAnimationFrame(animate);
-var start = {x: 0};
-var tween = new TWEEN.Tween(start)
-    .to({x: goal}, 500)
-    .onUpdate( function () {
-      console.log(goal);
-      pBarP.innerHTML = Math.round(start.x) + "%";
-      pBar.style.width = start.x + "%";
-    })
-  .start();
-</script>
-
-<style>
-#goal a {
-  display: flex;
-  justify-content: flex-start;
-}
-.goalContainer {
-  width: 100%;
-  overflow: hidden;
-  background-color: #052D49;
-  padding: .2em 0;
-}
-.percentageBar {
-  background-color: #F96854;
-  width: 0%;
-  height: 100%;
-  margin-bottom: -1.4em;
-}
-.goalContainer p {
-  display: flex;
-  justify-content: center;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-</style>
