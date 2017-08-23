@@ -79,7 +79,7 @@ class Register extends Controller
                 $oauth_client = new \Patreon\OAuth(Settings::get('client_id'), Settings::get('api_key'));
                 // Get a fresher access token
                 $tokens = $oauth_client->refresh_token(Settings::get('refresh_token'), null);
-                if ($tokens['access_token']) {
+                if (isset($tokens['access_token'])) {
                     // Set new token
                     $access_token = $tokens['access_token'];
                     Settings::set('refresh_token', $tokens['refresh_token']);

@@ -1,2 +1,4 @@
 vendor
 bower_components
+*.swo
+*.swp
