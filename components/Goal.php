@@ -9,12 +9,11 @@ class Goal extends ComponentBase
     {
         return [
             'name'        => 'Goal Component',
-            'description' => 'No description provided yet...'
+            'description' => "If styles don't show up, add the {% script %} & {% styles %} tag to the top of the document"
         ];
     }
-    public function init()
+    private function patreonRequest()
     {
-      $this->page['patreon_url'] = Settings::get('patreon_url');
       $register_client = new \Patreon\API(Settings::get('access_token'));
       $campaign_response = $register_client->fetch_campaign();
       
@@ -32,7 +31,7 @@ class Goal extends ComponentBase
           } else {
               // print_r($tokens);
               $this->addCss('/plugins/paul/patreon/assets/css/error.css');
-              return;
+              return false;
           }
       }
       $campaign = $campaign_response['data'];
@@ -42,16 +41,26 @@ class Goal extends ComponentBase
         foreach ($included as $obj) {
           if ($obj["type"] == "goal") {
             $pledge = $obj;
-            $this->page['goalPercentage'] =json_encode($pledge['attributes']['completed_percentage']);
-            $this->page['amount_cents'] = Settings::get('amount_cents');
+            Settings::set('completed_percentage', $pledge['attributes']['completed_percentage']).'343';
+            Settings::set('time_since_last_update', time());
             break;
           }
         }
       }
     }
+    public function init()
+    {
+      $this->page['patreon_url'] = Settings::get('patreon_url');
+      if ((Settings::get('time_since_last_update') + Settings::get('refresh_time') * 60) < time()) {
+        $this->patreonRequest();
+      }
+      $this->page['amount_cents'] = Settings::get('amount_cents');
+      $this->page['goalPercentage'] = Settings::get('completed_percentage');
+    }
     public function onRun()
     {
       $this->addCss('/plugins/paul/patreon/assets/css/goal.css');
+      $this->addJs('/plugins/paul/patreon/bower_components/tween.js/src/Tween.js');
       $this->addJs('/plugins/paul/patreon/assets/js/goal.js');
     }
     public function defineProperties()

@@ -14,3 +14,8 @@ fields:
         span: auto
         oc.commentPosition: ''
         type: text
+    refresh_time:
+        label: 'Time (in minutes) to refresh patreon data'
+        span: auto
+        oc.commentPosition: ''
+        type: text
