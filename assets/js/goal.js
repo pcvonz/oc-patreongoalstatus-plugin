@@ -3,7 +3,6 @@ window.onload = function () {
   var pBarP = document.querySelector(".goalContainer > p");
 
   var goal = document.getElementById('goal').dataset.percentage;
-
   function animate (time) {
     requestAnimationFrame(animate);
     TWEEN.update(time);

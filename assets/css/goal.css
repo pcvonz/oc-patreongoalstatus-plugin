@@ -6,7 +6,7 @@
   width: 100%;
   overflow: hidden;
   background-color: #052D49;
-  height: 1.6em;
+  height: 1.4em;
   padding: .2em 0;
 }
 .percentageBar {
@@ -18,10 +18,12 @@
 .goalContainer p {
   text-align: center;
   position: relative;
-  line-height: 1.5em;
+  line-height: 2.2em;
+  font-weight: bold;
   color: #F96854;
   margin: 0;
   padding: 0;
+  font-size: .8em;
 }
 
 .patreon {
@@ -31,8 +33,9 @@
   align-items: center;
   background-color: #F96854;
   box-sizing: border-box;
-  padding: 0 .5em .5em .5em;
+  padding: .5em .5em .5em .5em;
   transition: background-color .2s;
+  height: 4.3rem;
 }
 
 .patreon-row {
@@ -48,8 +51,8 @@
   background-size: auto 40%;
   background-repeat: no-repeat;
   background-position: 7px 50%;
-  width: 2.8em;
-  height: 2.8em;
+  width: 1.5em;
+  height: 2.4em;
   margin-right: .5em;
 }
 
@@ -57,7 +60,7 @@
   font-weight: bold;
   color: white;
   text-transform: uppercase;
-  font-size: .6em;
+  font-size: .66em;
   margin: 0;
   padding: .2em;
 }
@@ -68,6 +71,9 @@
 
 a.patreonLink {
   display: inline-block;
+  padding: 0;
+  height: auto;
+  margin-left: 2em;
 }
 
 a.patreonLink:hover {
