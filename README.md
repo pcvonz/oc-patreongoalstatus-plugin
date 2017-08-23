@@ -1,8 +1,7 @@
 ## October patreon
+![Screenshot](screenshot.png)
 
 ### Setup:
-
-![Screenshot](screenshot.png)
 
 - Create the folder `paul` in the plugins section of your October installation
 - Run `git clone https://github.com/pcvonz/october_patreon_goal_status.git patreon`
