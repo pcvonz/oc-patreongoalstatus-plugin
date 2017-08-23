@@ -14,23 +14,25 @@ class Goal extends ComponentBase
     }
     public function init()
     {
+      $this->page['patreon_url'] = Settings::get('patreon_url');
       $register_client = new \Patreon\API(Settings::get('access_token'));
       $campaign_response = $register_client->fetch_campaign();
-
+      
       // Handle access_token expiring:
       if (isset($campaign_response['errors'])) {
           $oauth_client = new \Patreon\OAuth(Settings::get('client_id'), Settings::get('api_key'));
           // Get a fresher access token
           $tokens = $oauth_client->refresh_token(Settings::get('refresh_token'), null);
           // echo Settings::get('refresh_token').'</br>';
-          if ($tokens['access_token']) {
+          if (isset($tokens['access_token'])) {
               // Set new token
               $access_token = $tokens['access_token'];
               Settings::set('refresh_token', $tokens['refresh_token']);
               Settings::set('access_token', $access_token);
           } else {
-              echo "Can't recover from access failure\n";
               // print_r($tokens);
+              $this->addCss('/plugins/paul/patreon/assets/css/error.css');
+              return;
           }
       }
       $campaign = $campaign_response['data'];
@@ -41,7 +43,6 @@ class Goal extends ComponentBase
           if ($obj["type"] == "goal") {
             $pledge = $obj;
             $this->page['goalPercentage'] =json_encode($pledge['attributes']['completed_percentage']);
-            $this->page['patreon_url'] = Settings::get('patreon_url');
             $this->page['amount_cents'] = Settings::get('amount_cents');
             break;
           }

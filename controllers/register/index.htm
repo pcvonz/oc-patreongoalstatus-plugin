@@ -1,11 +1,30 @@
-<p>If you haven't already, set your <b> api_key </b> and <b> client_id </b> in the settings.</p>
+<h1> Patreon </h1>
+<h2> Step 1: </h2>
+<p> Register a Patreon application <a href="https://www.patreon.com/platform/documentation/clients"> here </a>. </p>
+<h2> Step 2: </h2>
+<p>Go to the settings page and set your <b> client_secret </b> and <b> client_id </b>.</p>
+<h2> Step 3: </h2>
+<p>copy this url:</p>
 
+<code> <?= $redirect_uri ?> </code>
+
+</p>And set it as the <b> redirect_uri </b> of your Patreon application.</p>
+
+<h2> Step 4 </h2>
 <?= $url ?>
-<?= $this->makePartial('list')?>
 
+<hr />
+<?= $this->makePartial('patreonstatus')?>
+
+<style>
+#patreonStatus {
+  padding: .2em;
+  background-color: #dbdbdb;
+}
+</style>
 <script>
 $(document).ready(function () {
-  $(this).request('onLoad', {update: {list: '#div'
+  $(this).request('onLoad', {update: {patreonstatus: '#patreonStatus'
   }
   });
 });

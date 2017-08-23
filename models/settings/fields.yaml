@@ -1,21 +1,16 @@
 fields:
     api_key:
-        label: 'paul.patreon::lang.register.api_key'
+        label: 'Client Secret'
         oc.commentPosition: ''
         span: auto
         type: text
     client_id:
-        label: 'paul.patreon::lang.register.client_id'
+        label: 'Client ID'
         span: auto
         oc.commentPosition: ''
         type: text
     patreon_url:
         label: 'Patreon URL'
-        span: auto
-        oc.commentPosition: ''
-        type: text
-    refresh_token:
-        label: 'Refresh Token (automatically set after you authorize)'
         span: auto
         oc.commentPosition: ''
         type: text

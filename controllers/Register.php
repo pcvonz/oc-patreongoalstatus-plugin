@@ -22,9 +22,10 @@ class Register extends Controller
         $this->client_secret = Settings::get('api_key');
         $this->redirect_uri = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
         $this->creator_id = 'test';
-        $this->actual_link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+        $this->actual_link = $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".'/backend/paul/patreon/register';
+        $this->vars['redirect_uri'] = $this->actual_link;
         $this->vars['url'] = '<a href=http://www.patreon.com/oauth2/authorize?response_type=code&client_id='.$this->client_id.'&redirect_uri='.$this->actual_link.' >Click here to connect your patreon</a>';
-        $this->vars['accountStatus'] = '<b> not </b>';
+        $this->vars['accountStatus'] = '<h2> Retrieving status... </h2>';
     }
     public function index()
     {
@@ -33,7 +34,7 @@ class Register extends Controller
     {
       if (isset($_GET['code'])) {
         $oauth_client = new \Patreon\OAuth($this->client_id, $this->client_secret);
-        $tokens = $oauth_client->get_tokens($_GET['code'], $this->redirect_uri);
+        $tokens = $oauth_client->get_tokens($_GET['code'], $this->actual_link);
         $access_token = $tokens['access_token'];
         $refresh_token = $tokens['refresh_token'];
         Settings::set('refresh_token', $refresh_token);
@@ -62,7 +63,35 @@ class Register extends Controller
         }
       } 
       if(Settings::get('access_token') != null) {
-         $this->vars['accountStatus'] = '';
+         $register_client = new \Patreon\API(Settings::get('access_token'));
+         $campaign_response = $register_client->fetch_campaign();
+
+         // Handle access_token expiring:
+         if (isset($campaign_response['errors'])) {
+             $oauth_client = new \Patreon\OAuth(Settings::get('client_id'), Settings::get('api_key'));
+             // Get a fresher access token
+             $tokens = $oauth_client->refresh_token(Settings::get('refresh_token'), null);
+             // echo Settings::get('refresh_token').'</br>';
+             if ($tokens['access_token']) {
+                 // Set new token
+                 $access_token = $tokens['access_token'];
+                 Settings::set('refresh_token', $tokens['refresh_token']);
+                 Settings::set('access_token', $access_token);
+             } else {
+                 echo "Can't recover from access failure\n";
+                 // print_r($tokens);
+             }
+         }
+         if (isset($campaign_response['errors'])) {
+           $string = '<h2>%s</h2><p>%s</p>';
+           $this->vars['accountStatus'] = sprintf($string, $campaign_response['errors'][0]['code_name'], $campaign_response['errors'][0]['detail'] );
+         }
+         if (isset($campaign_response['data'])) {
+           $string = '<h2>Connection Successful</h2>'.
+            '<p> Connected to: %s </p>';
+           $this->vars['accountStatus'] = sprintf($string, $campaign_response['data'][0]['attributes']['creation_name']);
+           // $this->vars['accountStatus'] = json_encode($campaign_response['data']); 
+         }
       }
     }
 }

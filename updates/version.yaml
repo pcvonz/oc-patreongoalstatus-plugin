@@ -45,3 +45,9 @@
 1.0.16:
     - 'Updated table paul_patreon_system_settings'
     - builder_table_update_paul_patreon_system_settings_6.php
+1.0.17:
+    - 'Updated table paul_patreon_system_settings'
+    - builder_table_update_paul_patreon_system_settings_7.php
+1.0.18:
+    - 'Updated table paul_patreon_system_settings'
+    - builder_table_update_paul_patreon_system_settings_8.php
