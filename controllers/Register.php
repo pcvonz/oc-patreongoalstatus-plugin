@@ -27,7 +27,7 @@ class Register extends Controller
         $this->vars['url'] = 'http://www.patreon.com/oauth2/authorize?response_type=code&client_id='.$this->client_id.'&redirect_uri='.$this->actual_link;
         $this->vars['status'] = 'Retrieving status... ';
         $this->vars['short_description'] = 'waiting..';
-        $this->vars['detail'] = 'Shouldn\t take but a moment.';
+        $this->vars['detail'] = 'Shouldn’t take but a moment.';
         $this->vars['class'] = 'info';
         $this->vars['icon'] = 'info';
     }
@@ -99,13 +99,20 @@ class Register extends Controller
                 $this->vars['class'] = 'danger';
                 $this->vars['icon'] = 'warning';
             }
-            if (isset($campaign_response['data'])) {
+            elseif (isset($campaign_response['data'])) {
                 $this->vars['status'] = 'Connection Successful';
-                $this->vars['short_description'] = 'Yay!';
+                $this->vars['short_description'] = 'Successful response from Patreon!';
                 $this->vars['detail'] = 'Now connected to: '.$campaign_response['data'][0]['attributes']['creation_name'];
                 $this->vars['class'] = 'success';
                 $this->vars['icon'] = 'check';
             }
+        }
+        else {
+           $this->vars['status'] = 'Access token not set.';
+           $this->vars['short_description'] = 'Did you complete step four?';
+           $this->vars['detail'] = 'October Patreon couldn’t find an access token.';
+           $this->vars['class'] = 'danger';
+           $this->vars['icon'] = 'warning';
         }
     }
 }
