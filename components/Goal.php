@@ -9,7 +9,7 @@ class Goal extends ComponentBase
     {
         return [
             'name'        => 'Goal Component',
-            'description' => "If styles don't show up, add the {% script %} & {% styles %} tag to the top of the document"
+            'description' => "Adds a small widget that displays the percentage complete of a patreon campaign."
         ];
     }
     private function patreonRequest()
@@ -51,7 +51,12 @@ class Goal extends ComponentBase
     public function init()
     {
         $this->page['patreon_url'] = Settings::get('patreon_url');
-        if ((Settings::get('time_since_last_update') + Settings::get('refresh_time') * 60) < time()) {
+        $refresh_time = Settings::get('refresh_time');
+        // Make sure refresh time is never 0
+        if ( $refresh_time == '' || $refresh_time < 5) {
+            $refresh_time = 5;
+        }
+        if ((Settings::get('time_since_last_update') + $refresh_time * 60) < time()) {
             $this->patreonRequest();
         }
         $this->page['amount_cents'] = Settings::get('amount_cents');

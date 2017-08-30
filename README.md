@@ -8,3 +8,7 @@
 - In the newly cloned directory run `composer install && bower install`
 - Make sure you change the folder permissions so your web server can read the contents of this directory (`chown -R web_server_user october/plugins/paul`)
 - Open up the back end page, there should be a tab called 'patreon'
+
+### Adding to a partial:
+
+If you add this component to a partial, be sure to include the `{% scripts %}` and `{% styles %}` tags.
