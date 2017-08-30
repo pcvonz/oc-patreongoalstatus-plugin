@@ -7,7 +7,6 @@ window.onload = function () {
     requestAnimationFrame(animate);
     TWEEN.update(time);
   }
-  var goal = 90;
   requestAnimationFrame(animate);
   var start = {x: 0};
   var tween = new TWEEN.Tween(start)
