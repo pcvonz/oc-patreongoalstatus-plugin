@@ -7,7 +7,7 @@
   overflow: hidden;
   background-color: #052D49;
   height: 1.4em;
-  padding: .2em 0;
+  padding: .1em 0;
 }
 .percentageBar {
   background-color: white;
@@ -34,8 +34,13 @@
   background-color: #F96854;
   box-sizing: border-box;
   padding: .5em .5em .5em .5em;
-  transition: background-color .2s;
+  transition: border .2s;
+  border-bottom: 0 solid #052D49;
   height: 62px;
+}
+
+a:hover > .patreon {
+  border-bottom: 4px solid #052D49;
 }
 
 .patreon-row {
@@ -80,6 +85,3 @@ a.patreonLink:hover {
   text-decoration: none;
 }
 
-a:hover > .patreon {
-  background-color: #FF6330;
-}
