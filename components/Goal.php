@@ -19,7 +19,7 @@ class Goal extends ComponentBase
 
         // Handle access_token expiring:
         if (isset($campaign_response['errors'])) {
-            $oauth_client = new \Patreon\OAuth(Settings::get('client_id'), Settings::get('api_key'));
+            $oauth_client = new \Patreon\OAuth(Settings::get('client_id'), Settings::get('client_secret'));
             // Get a fresher access token
             $tokens = $oauth_client->refresh_token(Settings::get('refresh_token'), null);
             // echo Settings::get('refresh_token').'</br>';

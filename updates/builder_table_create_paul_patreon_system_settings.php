@@ -16,7 +16,6 @@ class BuilderTableCreatePaulPatreonSystemSettings extends Migration
             $table->string('client_secret')->nullable();
             $table->integer('refresh_time')->nullable()->default(30);
             $table->integer('time_since_last_update')->nullable();
-            $table->string('api_key')->nullable();
             $table->string('client_id')->nullable();
             $table->integer('amount_cents')->nullable();
         });

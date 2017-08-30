@@ -19,7 +19,7 @@ class Register extends Controller
         parent::__construct();
         BackendMenu::setContext('Paul.Patreon', 'Patreon');
         $this->client_id = Settings::get('client_id');
-        $this->client_secret = Settings::get('api_key');
+        $this->client_secret = Settings::get('client_secret');
         $this->redirect_uri = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
         $this->creator_id = 'test';
         $this->actual_link = $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".'/backend/paul/patreon/register';
@@ -76,7 +76,7 @@ class Register extends Controller
 
             // Handle access_token expiring:
             if (isset($campaign_response['errors'])) {
-                $oauth_client = new \Patreon\OAuth(Settings::get('client_id'), Settings::get('api_key'));
+                $oauth_client = new \Patreon\OAuth(Settings::get('client_id'), Settings::get('client_secret'));
                 // Get a fresher access token
                 $tokens = $oauth_client->refresh_token(Settings::get('refresh_token'), null);
                 if (isset($tokens['access_token'])) {

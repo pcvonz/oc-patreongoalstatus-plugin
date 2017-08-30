@@ -17,7 +17,7 @@ class Plugin extends PluginBase
       return [
         'settings' => [
             'label'       => 'Patreon Settings',
-            'description' => 'Set your patreon client_id and api_key',
+            'description' => 'Set your patreon client_id and client_secret',
             'icon'        => 'icon-money',
             'class'       => 'Paul\Patreon\Models\Settings',
             'order'       => 0,

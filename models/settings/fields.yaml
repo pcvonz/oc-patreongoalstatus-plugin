@@ -1,14 +1,14 @@
 fields:
-    api_key:
-        label: 'Client Secret'
-        oc.commentPosition: ''
-        span: auto
-        type: text
     client_id:
         label: 'Client ID'
         span: auto
         oc.commentPosition: ''
-        type: text
+        type: password
+    client_secret:
+        label: 'Client Secret'
+        oc.commentPosition: ''
+        span: auto
+        type: password
     patreon_url:
         label: 'Patreon URL'
         span: auto
@@ -17,5 +17,4 @@ fields:
     refresh_time:
         label: 'Time (in minutes) to refresh patreon data'
         span: auto
-        oc.commentPosition: ''
-        type: text
+        type: number

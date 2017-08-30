@@ -4,7 +4,7 @@
         'description' => '',
     ],
     'register' => [
-        'api_key' => 'api_key',
+        'client_secret' => 'client_secret',
         'client_id' => 'client_id',
     ],
     'paul' => [
