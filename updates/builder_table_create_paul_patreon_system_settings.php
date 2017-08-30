@@ -10,8 +10,15 @@ class BuilderTableCreatePaulPatreonSystemSettings extends Migration
         Schema::create('paul_patreon_system_settings', function($table)
         {
             $table->engine = 'InnoDB';
-            $table->string('api_key');
-            $table->string('clien_id');
+            $table->string('access_token')->nullable();
+            $table->string('refresh_token')->nullable();
+            $table->integer('completed_percentage')->nullable();
+            $table->string('client_secret')->nullable();
+            $table->integer('refresh_time')->nullable();
+            $table->integer('time_since_last_update')->nullable();
+            $table->string('api_key')->nullable();
+            $table->string('client_id')->nullable();
+            $table->integer('amount_cents')->nullable();
         });
     }
     
