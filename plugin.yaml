@@ -2,7 +2,7 @@ plugin:
     name: 'paulvonzimmerman.patreon::lang.plugin.name'
     description: 'paulvonzimmerman.patreon::lang.plugin.description'
     author: PaulVonZimmerman
-    icon: oc-icon-adjust
+    icon: icon-money
     homepage: ''
 navigation:
     Patreon:
