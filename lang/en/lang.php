@@ -7,7 +7,7 @@
         'client_secret' => 'client_secret',
         'client_id' => 'client_id',
     ],
-    'paul' => [
+    'paulvonzimmerman' => [
         'patreon' => [
             'manage_register' => 'Manage Api',
         ],

@@ -1,7 +1,7 @@
-<?php namespace Paul\Patreon\Components;
+<?php namespace PaulVonZimmerman\Patreon\Components;
 
 use Cms\Classes\ComponentBase;
-use Paul\Patreon\Models\Settings;
+use PaulVonZimmerman\Patreon\Models\Settings;
 
 class Goal extends ComponentBase
 {
@@ -30,7 +30,7 @@ class Goal extends ComponentBase
                 Settings::set('access_token', $access_token);
             } else {
                 // print_r($tokens);
-                $this->addCss('/plugins/paul/patreon/assets/css/error.css');
+                $this->addCss('/plugins/paulvonzimmerman/patreon/assets/css/error.css');
                 return false;
             }
         }
@@ -64,9 +64,9 @@ class Goal extends ComponentBase
     }
     public function onRun()
     {
-        $this->addCss('/plugins/paul/patreon/assets/css/goal.css');
-        $this->addJs('/plugins/paul/patreon/bower_components/tween.js/src/Tween.js');
-        $this->addJs('/plugins/paul/patreon/assets/js/goal.js');
+        $this->addCss('/plugins/paulvonzimmerman/patreon/assets/css/goal.css');
+        $this->addJs('/plugins/paulvonzimmerman/patreon/bower_components/tween.js/src/Tween.js');
+        $this->addJs('/plugins/paulvonzimmerman/patreon/assets/js/goal.js');
     }
     public function defineProperties()
     {

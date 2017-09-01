@@ -1,13 +1,13 @@
-<?php namespace Paul\Patreon\Updates;
+<?php namespace PaulVonZimmerman\Patreon\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableCreatePaulPatreonSystemSettings extends Migration
+class BuilderTableCreatePaulVonZimmermanPatreonSystemSettings extends Migration
 {
     public function up()
     {
-        Schema::create('paul_patreon_system_settings', function($table)
+        Schema::create('paulvonzimmerman_patreon_system_settings', function($table)
         {
             $table->engine = 'InnoDB';
             $table->string('access_token')->nullable();
@@ -23,6 +23,6 @@ class BuilderTableCreatePaulPatreonSystemSettings extends Migration
     
     public function down()
     {
-        Schema::dropIfExists('paul_patreon_system_settings');
+        Schema::dropIfExists('paulvonzimmerman_patreon_system_settings');
     }
 }

@@ -1,4 +1,4 @@
-<?php namespace Paul\Patreon;
+<?php namespace PaulVonZimmerman\Patreon;
 require __DIR__ . '/vendor/autoload.php';
 
 use System\Classes\PluginBase;
@@ -8,7 +8,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
       return [
-        'Paul\Patreon\Components\Goal' => 'Goal'
+        'PaulVonZimmerman\Patreon\Components\Goal' => 'Goal'
       ];
     }
 
@@ -19,10 +19,10 @@ class Plugin extends PluginBase
             'label'       => 'Patreon Settings',
             'description' => 'Set your patreon client_id and client_secret',
             'icon'        => 'icon-money',
-            'class'       => 'Paul\Patreon\Models\Settings',
+            'class'       => 'PaulVonZimmerman\Patreon\Models\Settings',
             'order'       => 0,
             'keywords'    => 'security location',
-            'permissions' => ['paul.patreon.access_settings']
+            'permissions' => ['paulvonzimmerman.patreon.access_settings']
         ]
     ];
     }

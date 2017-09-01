@@ -1,4 +1,4 @@
-<?php namespace Paul\Patreon\Models;
+<?php namespace PaulVonZimmerman\Patreon\Models;
 
 use Model;
 
@@ -12,5 +12,5 @@ class Settings extends Model
 
     // Settings field & Code
     public $settingsFields = 'fields.yaml';
-    public $settingsCode = 'paul_patreon_system_settings';
+    public $settingsCode = 'paulvonzimmerman_patreon_system_settings';
 }

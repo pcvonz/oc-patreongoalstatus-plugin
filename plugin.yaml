@@ -1,17 +1,17 @@
 plugin:
-    name: 'paul.patreon::lang.plugin.name'
-    description: 'paul.patreon::lang.plugin.description'
-    author: paul
+    name: 'paulvonzimmerman.patreon::lang.plugin.name'
+    description: 'paulvonzimmerman.patreon::lang.plugin.description'
+    author: PaulVonZimmerman
     icon: oc-icon-adjust
     homepage: ''
 navigation:
     Patreon:
         label: Patreon
-        url: paul/patreon/register
+        url: paulvonzimmerman/patreon/register
         icon: icon-money
         permissions:
-            - paul.patreon.manage_register
+            - paulvonzimmerman.patreon.manage_register
 permissions:
-    paul.patreon.manage_register:
-        tab: 'paul.patreon::lang.plugin.name'
+    paulvonzimmerman.patreon.manage_register:
+        tab: 'paulvonzimmerman.patreon::lang.plugin.name'
         label: Manage

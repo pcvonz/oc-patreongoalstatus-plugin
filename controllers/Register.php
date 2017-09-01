@@ -1,10 +1,10 @@
-<?php namespace Paul\Patreon\Controllers;
+<?php namespace PaulVonZimmerman\Patreon\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
 use \Patreon\API;
 use \Patreon\OAuth;
-use Paul\Patreon\Models\Settings;
+use PaulVonZimmerman\Patreon\Models\Settings;
 
 class Register extends Controller
 {
@@ -17,12 +17,12 @@ class Register extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('Paul.Patreon', 'Patreon');
+        BackendMenu::setContext('PaulVonZimmerman.Patreon', 'Patreon');
         $this->client_id = Settings::get('client_id');
         $this->client_secret = Settings::get('client_secret');
         $this->redirect_uri = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
         $this->creator_id = 'test';
-        $this->actual_link = $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".'/backend/paul/patreon/register';
+        $this->actual_link = $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".'/backend/PaulVonZimmerman/patreon/register';
         $this->vars['redirect_uri'] = $this->actual_link;
         $this->vars['url'] = 'http://www.patreon.com/oauth2/authorize?response_type=code&client_id='.$this->client_id.'&redirect_uri='.$this->actual_link;
         $this->vars['status'] = 'Retrieving status... ';
