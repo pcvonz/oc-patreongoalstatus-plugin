@@ -18,6 +18,7 @@ class Register extends Controller
     {
         parent::__construct();
         BackendMenu::setContext('PaulVonZimmerman.Patreon', 'Patreon');
+        $this->pageTitle = 'Patreon';
         $this->client_id = Settings::get('client_id');
         $this->client_secret = Settings::get('client_secret');
         $this->redirect_uri = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
