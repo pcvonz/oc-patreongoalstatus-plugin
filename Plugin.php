@@ -1,5 +1,4 @@
 <?php namespace PaulVonZimmerman\Patreon;
-require __DIR__ . '/vendor/autoload.php';
 
 use System\Classes\PluginBase;
 
