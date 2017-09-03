@@ -53,12 +53,10 @@ a:hover > .patreon {
 
 .patreon-brand {
   background-image: url('../images/become_a_patron_button.png');
-  background-size: 80%;
+  background-size: 130px;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
-  background-position-y: 92%;
-  background-position-x: -24%;	
 }
 
 .patreon-uppercase {
