@@ -4,26 +4,22 @@
 }
 .goalContainer {
   width: 100%;
-  overflow: hidden;
   background-color: #052D49;
-  height: 1.4em;
-  padding: .1em 0;
+  height: 16.5px;
+  border-top: 2px solid #052D49;
+  border-bottom: 2px solid #052D49;
 }
 .percentageBar {
-  background-color: white;
-  width: 0%;
   height: 100%;
   margin-bottom: -1.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.goalContainer p {
-  text-align: center;
-  position: relative;
-  line-height: 2.2em;
+.goalContainer div div {
   font-weight: bold;
   color: #F96854;
-  margin: 0;
-  padding: 0;
-  font-size: .8em;
+  font-size: 12px;
 }
 
 .patreon {
@@ -35,8 +31,8 @@
   box-sizing: border-box;
   padding: .5em .5em .5em .5em;
   transition: border .2s;
-  border-bottom: 0 solid #052D49;
-  height: 62px;
+  border-bottom: 4px solid #F96854;
+  height: 61px;
 }
 
 a:hover > .patreon {
