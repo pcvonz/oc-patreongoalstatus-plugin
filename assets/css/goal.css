@@ -28,10 +28,10 @@
   align-items: center;
   background-color: #F96854;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 6px 6px 2px 6px;
   transition: border .2s;
   border-bottom: 4px solid #F96854;
-  height: 61px;
+  height: 50px;
 }
 
 a:hover > .patreon {
