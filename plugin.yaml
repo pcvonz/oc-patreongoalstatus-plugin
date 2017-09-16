@@ -1,5 +1,5 @@
 plugin:
-    name: 'paulvonzimmerman.patreon::lang.plugin.name'
+    name: Patreon
     description: 'paulvonzimmerman.patreon::lang.plugin.description'
     author: PaulVonZimmerman
     icon: icon-money

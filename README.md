@@ -1,5 +1,5 @@
 # October patreon
-![Screenshot](screenshot.png)
+![Screenshot](./screenshot.png)
 
 
 ## Setup 

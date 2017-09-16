@@ -67,7 +67,6 @@ class Goal extends ComponentBase
         if ((Settings::get('time_since_last_update') + $refresh_time * 60) < time()) {
             $this->patreonRequest();
             Settings::set('time_since_last_update', time());
-            echo('refresh');
         }
         $this->page['amount_cents'] = Settings::get('amount_cents');
         $this->page['goalPercentage'] = Settings::get('completed_percentage');
