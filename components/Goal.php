@@ -34,19 +34,27 @@ class Goal extends ComponentBase
                 return false;
             }
         }
-        $campaign = $campaign_response['data'];
         $included = $campaign_response['included'];
-        $goal = null;
         if ($included != null) {
             foreach ($included as $obj) {
                 if ($obj["type"] == "goal") {
-                    $pledge = $obj;
-                    Settings::set('completed_percentage', $pledge['attributes']['completed_percentage']).'343';
-                    Settings::set('time_since_last_update', time());
-                    break;
+                    $goal = $obj;
+                    // Grab the first goal that is less than 100%
+                    // If none are less than 100%, it'll pull latest entry from settings
+                    if($goal['attributes']['completed_percentage'] < 100) {
+                        // Set new goal amount (in case of update)
+                        $this->update_goal_amount($goal['attributes']['amount_cents']);
+
+                        Settings::set('completed_percentage', $goal['attributes']['completed_percentage']);
+                        break;
+                    }
                 }
             }
         }
+    }
+    public function update_goal_amount($cents)
+    {
+        Settings::set('amount_cents', '$'.number_format($cents / 100, 2, '.', ','));
     }
     public function init()
     {
@@ -58,6 +66,8 @@ class Goal extends ComponentBase
         }
         if ((Settings::get('time_since_last_update') + $refresh_time * 60) < time()) {
             $this->patreonRequest();
+            Settings::set('time_since_last_update', time());
+            echo('refresh');
         }
         $this->page['amount_cents'] = Settings::get('amount_cents');
         $this->page['goalPercentage'] = Settings::get('completed_percentage');

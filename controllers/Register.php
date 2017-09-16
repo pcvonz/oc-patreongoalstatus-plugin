@@ -103,9 +103,20 @@ class Register extends Controller
             elseif (isset($campaign_response['data'])) {
                 $this->vars['status'] = 'Connection Successful';
                 $this->vars['short_description'] = 'Successful response from Patreon!';
-                $this->vars['detail'] = 'Now connected to: '.$campaign_response['data'][0]['attributes']['creation_name'];
+                $this->vars['detail'] = 'Now connected to: '.$campaign_response['data'][0]['attributes']['creation_name'].'<p>Goals:</p><ul>';
                 $this->vars['class'] = 'success';
                 $this->vars['icon'] = 'check';
+                $included = $campaign_response['included'];
+                $goal = null;
+                if ($included != null) {
+                    foreach ($included as $obj) {
+                        if ($obj["type"] == "goal") {
+                            $pledge = $obj;
+                            $this->vars['detail'] = $this->vars['detail'].'<li>'.$pledge['attributes']['description'];
+                        }
+                    }
+                }
+                $this->vars['detail'] = $this->vars['detail'].'</ul>';
             }
         }
         else {
